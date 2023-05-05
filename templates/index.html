@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<h1>{% block title %}Register{% endblock %}</h1>
+
+{% endblock %}
+
+{% block content %}
+<h1 class = "dark">Please Upload An Image File</h1>
+<div class = "form">
+    <form action ="/" method = "POST" enctype="multipart/form-data" >
+        <input type = "file" accept = "image/*" name = "file" id = "file" >
+        <input type = "submit" value = "Upload File">
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Delete</th>
+    </tr>
+    {% for image in images %}
+    <tr>
+        <td><img src = "../static/temporary_file/{{image.filename}}"></td>
+        <td><a href = "/delete/{{ image.id }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
